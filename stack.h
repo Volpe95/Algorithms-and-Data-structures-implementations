@@ -10,8 +10,11 @@
 */
 
 #include<string> // Value Type of the stack may be a string .
+#include<iostream>       /* cout */
 #include <assert.h>     /* assert */
 using namespace std;
+
+#define initial_size  2
 
 template<class ValType> class stack{
 
@@ -36,8 +39,8 @@ private:
 };
 
 template<class ValType>stack<ValType> :: stack() { // Constructor
-    counter = 0 ; Current_Max_Size = 256 ;
-    arr = new ValType[256] ; // initialize the array with 256
+    counter = 0 ; Current_Max_Size = initial_size ;
+    arr = new ValType[initial_size] ; // initialize the array with 256
 }
 
 template<class ValType> ValType stack<ValType> :: pop(){ // takes out the first value and returns it
@@ -78,9 +81,9 @@ template<class ValType> int stack<ValType> :: size(){
 template<class ValType> void stack<ValType> :: clear(){
     delete arr ;   counter = 0  ;
 
-    Current_Max_Size = 256 ;
+    Current_Max_Size = initial_size ;
 
-    arr = new ValType[256] ;
+    arr = new ValType[initial_size] ;
 
     return ;
 }
@@ -94,7 +97,7 @@ template<class ValType> void stack<ValType> :: print(){
 
 template<class ValType> void stack<ValType> :: check(){
 
-    if(size() * 4 == Current_Max_Size && Current_Max_Size != 256){
+    if(size() * 4 == Current_Max_Size && Current_Max_Size != initial_size){
         resize(0) ; // Decrease the array size .
     }
     return ;
@@ -146,10 +149,3 @@ template<class ValType> void stack<ValType> :: resize(bool type){
     }
     return ;
 }
-
-
-/*** TODO ***\
-
- Public : Print
-
- */
